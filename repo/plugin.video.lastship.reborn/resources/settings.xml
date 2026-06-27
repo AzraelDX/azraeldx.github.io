@@ -1,0 +1,131 @@
+<settings>
+    <category label="Allgemein">
+        <setting id="hosts.mode" type="enum" label="Standard-Aktion" values="Dialog|Verzeichnis|Autoplay" default="1" />
+		<setting id="prefLanguage" label="Sprachen" type="enum" values="All|German|English|Japanese" default="0" />
+        <setting id="scrapers.timeout" type="slider" label="Zeitlimit f&#252;r Indexseiten" default="35" range="10,60" option="int" />
+        <setting id="fanart" type="bool" label="Fanart verwenden" default="true" />
+        <setting id="search.doku" type="bool" label="Auch nach Dokumentationen suchen" default="false" />
+        <setting type="lsep" label="Einstellungen RequestHandler" />
+		<setting default="true" id="volatileHtmlCache" type="bool" label="HTML Inhalte werden nur im RAM zwischengespeichert" visible="true" />
+        <setting default="10" id="requestTimeout" label="Timeout f&#252;r HTTP-Anfragen in Sekunden" option="int" range="1,1,60" type="slider" />
+        <setting default="600" id="cacheTime" label="Cachezeit f&#252;r Webseiten (HtmlCache) in Sekunden" option="int" range="0,60,1800" type="slider" />
+        <setting default="2" id="cacheDeltaDay" label="Html Cache nach Tage l&#246;schen" option="int" range="1,1,7" type="slider" />
+        <setting id="delHtmlCache" label="[B][COLOR red]Html Cache einmalig bei Neustart l&#246;schen[/COLOR][/B]" type="bool" default="false" />
+	    <setting id="bypassDNSlock" type="bool" label="DNS-Sperre Umgehen" default="false" />	
+	    <setting id="veryfi" type="bool" label="Verifizierung Umgehen" default="false" />	
+        <setting type="lsep" label="Status - gesehen / ungesehen" />
+        <setting type="text" label="[COLOR blue]Auf leistungsschwachen Ger&#228;ten ben&#246;tigt diese [CR]Komfortfunktion etwas mehr Zeit![/COLOR]" />
+        <setting id="status.refresh.movies" type="bool" label="Filme - Status aktualisieren (refresh)" default="true" />
+        <setting id="status.refresh.episodes" type="bool" label="Episoden - Status aktualisieren (refresh)" default="true" />
+        <setting id="status.position" type="bool" label="Status - Bei Serien die aktuelle Position setzen" default="true" />
+        <setting id="status.debug" type="bool" label="Debug" default="false" />
+
+    </category>
+
+    <category label="Wiedergabe">
+        <setting id="progress.dialog" type="enum" label="Fortschrittsdialog" values="Vordergrund|Hintergrund" default="0" />
+        <setting id="prem.identify" type="enum" label="Textfarbe f&#252;r Premium-Links" values="Blau|Rot|Gelb|Altrosa|Cyan|Grasgr&#252;n|Gold|Magenta|Gelbgr&#252;n|Ohne Farbe" default="0" />
+        <setting type="lsep" label="Dateinanbieter-Filter" />
+        <setting id="hosts.quality" type="enum" label="H&#246;chste Qualit&#228;t" values="4K|1440p|1080p|720p|480p" default="2" />
+        <setting id="hosts.sort.priority" type="bool" label="Indexseiten bei Serien nach Priorit&#228;t sortieren" default="false" />
+        <setting id="hosts.sort.provider" type="bool" label="Indexseiten nach Anbieter sortieren" default="false" />
+        <setting id="hosts.limit" type="bool" label="Limit Hosteranzahl" default="False" />
+        <setting id="hosts.limit.num" type="slider" label="Liste begrenzen auf:" default="15" range="5,50" option="int" visible="eq(-1,true)" />
+        <setting id="hosts.filter" type="text" label="Hoster ausschlie&#223;en (Liste)" default="" />
+        <setting type="lsep" label="Bei Wiedergabe-Start..." />
+        <setting id="bookmarks" type="bool" label="Fortsetzen" default="true" />
+        <setting id="bookmarks.auto" type="bool" label="Automatisch Fortsetzen" default="false" enable="!eq(-1,false)" />
+    </category>
+	<category label="Remote/Local Loading">
+        <setting type="text" label="[COLOR yellow]Lade Scraper und Sites lokal oder remote[/COLOR]" />
+		<setting label="Lokal-Loading aktivieren" type="bool" id="local.enable" default="false" />
+        <setting label="Remote-Loading aktivieren" type="bool" id="remote.enable" default="true" />
+        <setting label="Remote Repository URL" type="text" id="remote.base_url" default="https://raw.githubusercontent.com/mr-evil1/lastship-modules/main" visible="false" />
+        <setting label="Cache-Dauer (Stunden)" type="slider" id="remote.cache_hours" default="24" range="1,1,168" option="int" visible="eq(-2,true)" />
+        <setting label="Lokale Module als Fallback" type="bool" id="remote.fallback" default="true" visible="eq(-3,true)" />
+        <setting type="sep" />
+        <setting type="lsep" label="Aktionen" />
+        <setting label="Jetzt aktualisieren" type="action" id="remote.update_now" action="RunScript(special://home/addons/plugin.video.lastship.reborn/remote_update.py)" visible="eq(-5,true)" />
+        <setting label="Cache leeren" type="action" id="remote.clear_cache" action="RunScript(special://home/addons/plugin.video.lastship.reborn/remote_clear_cache.py)" visible="eq(-6,true)" />
+        <setting type="sep" />
+        <setting type="lsep" label="Auto-Update" />
+        <setting label="Auto-Update aktivieren" type="bool" id="remote.auto_update" default="true" visible="eq(-9,true)" />
+        <setting type="text" label="[COLOR blue]Module werden automatisch beim Addon-Start aktualisiert[/COLOR]" visible="eq(-1,true)" />
+    </category>
+    <category label="Indexseiten (DE)">
+        </category>
+	<category label="Indexseiten 2 (DE)">
+        </category>
+	<category label="Konten">
+        <setting type="lsep" label="Konto [B]SerienStream.to[/B]" />
+        <setting id="serienstream.user" type="text" label="Email" default="" />
+        <setting id="serienstream.pass" type="text" option="hidden" label="Password" default="" />
+        <setting type="lsep" label="Konto [B]Anicloud.io[/B]" />
+        <setting id="aniworld.user" type="text" label="Email" default="" />
+        <setting id="aniworld.pass" type="text" option="hidden" label="Password" default="" />
+        <setting type="lsep" label="Konto [B]Flimmerstube.com[/B]" />
+        <setting id="flimmerstube.user" type="text" label="Email" default="" />
+        <setting id="flimmerstube.pass" type="text" option="hidden" label="Password" default="" />
+        <setting type="lsep" label="TMDb" />
+        <setting id="api.tmdb" type="text" option="hidden" label="API-Key" default="0b529d296545c2545a68db5cb903cd94" />
+        <setting type="lsep" label="TRAKT" />
+        <setting id="api.trakt" type="text" option="hidden" label="API-Key" default="85d3b28a69fd4d8162b3ea78689e1c8b15ff2ad9c1430ef6fc5a950662aee3ec" />
+        <setting type="lsep" label="FANART.TV" />
+        <setting id="api.fanart.tv" type="text" label="API-Key" option="hidden" default="e376e8591e1580089d93ab4135fcc082" />
+        <setting type="lsep" label="Konto [B]opensubtitles.org[/B]" />
+        <setting id="subtitles.os_user" type="text" label="UserName" default="" />
+        <setting id="subtitles.os_pass" type="text" option="hidden" label="Password" default="" />
+    </category>
+	<category label="Support Chat Function">
+		<setting id="chatname" type="text" label="Chat Name : " default="" visible="true" />
+	</category>
+    <category label="Downloads / Untertitel">
+        <setting id="downloads" type="bool" label="Herunterladen aktivieren" default="false" />
+        <setting type="lsep" label="Bitte Ordnerpfade eingeben" />
+        <setting label="[COLOR blue]Hier Hilfe zum Syntax f&#252;r den Ordnerpfad[/COLOR]" type="action" action="RunPlugin(plugin://plugin.video.lastship/?action=settings&amp;subaction=downloadInfo)" option="" />
+        <setting id="download.movie.path" type="folder" label="Filme" enable="!eq(-3,false)" default="" />
+        <setting id="download.tv.path" type="folder" label="TV-Serien" enable="!eq(-4,false)" default="" />
+        <setting type="sep" />
+        <setting id="subtitles" type="bool" label="Untertitel aktivieren" default="false" />
+        <setting type="text" label="[COLOR blue]Konto auf [B]opensubtitles.org[/B] einrichten und[CR]die Zugandsdaten unter Einstellungen / Konten eintragen![CR][/COLOR]" visible="!eq(-1,false)" />
+        <setting type="sep" />
+        <setting id="subtitles.lang.1" type="select" label="Hauptsprache" values="Afrikaans|Albanian|Arabic|Armenian|Basque|Bengali|Bosnian|Breton|Bulgarian|Burmese|Catalan|Chinese|Croatian|Czech|Danish|Dutch|English|Esperanto|Estonian|Finnish|French|Galician|Georgian|German|Greek|Hebrew|Hindi|Hungarian|Icelandic|Indonesian|Italian|Japanese|Kazakh|Khmer|Korean|Latvian|Lithuanian|Luxembourgish|Macedonian|Malay|Malayalam|Manipuri|Mongolian|Montenegrin|Norwegian|Occitan|Persian|Polish|Portuguese|Portuguese(Brazil)|Romanian|Russian|Serbian|Sinhalese|Slovak|Slovenian|Spanish|Swahili|Swedish|Syriac|Tagalog|Tamil|Telugu|Thai|Turkish|Ukrainian|Urdu" enable="!eq(-3,false)" default="German" />
+        <setting id="subtitles.lang.2" type="select" label="Zweitsprache" values="Afrikaans|Albanian|Arabic|Armenian|Basque|Bengali|Bosnian|Breton|Bulgarian|Burmese|Catalan|Chinese|Croatian|Czech|Danish|Dutch|English|Esperanto|Estonian|Finnish|French|Galician|Georgian|German|Greek|Hebrew|Hindi|Hungarian|Icelandic|Indonesian|Italian|Japanese|Kazakh|Khmer|Korean|Latvian|Lithuanian|Luxembourgish|Macedonian|Malay|Malayalam|Manipuri|Mongolian|Montenegrin|Norwegian|Occitan|Persian|Polish|Portuguese|Portuguese(Brazil)|Romanian|Russian|Serbian|Sinhalese|Slovak|Slovenian|Spanish|Swahili|Swedish|Syriac|Tagalog|Tamil|Telugu|Thai|Turkish|Ukrainian|Urdu" enable="!eq(-4,false)" default="English" />
+        <setting id="subtitles.utf" type="bool" label="Untertitel nach UTF-8 umwandeln" enable="!eq(-5,false)" default="false" />
+    </category>
+    <category label="[COLOR red]Experimentell[/COLOR]">
+        <setting id="menuxstream" type="bool" label="[B]Seiten wie bei [COLOR red]xStream[/COLOR]           ON / OFF[/B]" default="false" />
+        <setting type="sep" />
+        <setting id="playstream" type="bool" label="[B]Play Stream from Url         ON / OFF[/B]" default="false" />
+        <setting type="sep" />
+        <setting id="menuvavoo" type="bool" label="[B]Vavoo Live TV        ON / OFF[/B]" default="true" />
+        <setting default="1" id="auto" label="IPTV Autoplay" type="enum" values="Auto|Countdown|Manuell" />
+        <setting default="5" id="count" label="Countdown Zeit" type="number" option="int" visible="eq(-1,1)" />
+        <setting default="true" id="hls" type="bool" label="HLS-Streams benutzen" visible="true" />
+        <setting type="sep" />
+        <setting type="text" label="[COLOR blue]Anzeige aktualisieren wenn Sender zur Favoritenliste hinzu[CR]gef&#252;gt wird.  Auf leistungsschwachen Ger&#228;ten ben&#246;tigt diese[/COLOR]" />
+        <setting type="text" label="[COLOR blue]Komfortfunktion etwas mehr Zeit![/COLOR]" />
+        <setting id="refresh.list" type="bool" label="Status aktualisieren (refresh)" default="true" />
+    </category>
+	<category label="Updates / Wartung">
+        <setting type="text" label="[COLOR blue]Updates und Wartung erfolgt bei einen Neustart von KODI[/COLOR]" />
+        <setting type="lsep" label="Service Modul Update" />
+		<setting id="nightlyupdate" label="[B][COLOR red]Addon Aktualisierung [/COLOR][/B] (Auto Update)" type="bool" default="true" />
+		<setting id="nightlyurl" type="text" label="Externe Update Url" default="" visible="eq(-1,true)" />
+        <setting type="text" label="[COLOR blue]Resolver AutoUpdate![/COLOR]" />
+        <setting id="update.enforceUpdate" label="[B][COLOR red]Resolver Aktualisierung [/COLOR][/B] (Nightly Update)" type="bool" default="false" />
+		<setting type="lsep" label="Service Modul Wartung" />
+        <setting id="service.check_del" label="Wartung(Cache und Thumb l&#246;schen)" type="bool" default="false" />
+        <setting id="service.dayfornextcheck" type="slider" label="Im Zeitraum von (Tage) " default="30" range="0,60" option="int" visible="eq(-1,true)" />
+        <setting id="service.enforceRefresh" label="[B][COLOR red]Refresh Thumbnails einmalig erzwingen[/COLOR][/B]" type="bool" default="false" />
+        <setting id="Debug" type="bool" label="Debug fuer Alles" default="false" />
+		<setting id="DebugALL" type="bool" label="Alle Plugins" default="false" />
+        <setting id="DebugMassage" type="bool" label="Debug Nachrichten f&#252;r Addons aktivieren" default="false" />
+    </category>
+	<category label="For Admin">
+		<setting type="lsep" label="[COLOR dodgerblue][B]Only for Admins[/B][/COLOR]" />
+		<setting id="adminchatpass" type="text" label="Admin Passwort : " default="" visible="true" />
+		<setting id="HtmlCache" type="text" label="" default="" visible="false" />
+		<setting id="chatname" type="text" label="Admin Chat Name : " default="" visible="true" />
+	</category>
+</settings>
